@@ -35,4 +35,4 @@ jobs:
           bundler-cache: true
       # Add or replace test runners here
       - name: Start App
-        run: bin/rails server
+        run: bin/rke
