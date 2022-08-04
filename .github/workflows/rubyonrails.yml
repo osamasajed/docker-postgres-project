@@ -35,6 +35,4 @@ jobs:
           bundler-cache: true
       # Add or replace test runners here
       - name: Testing App
-        run: |
-          bundle exec rails db:setup
-          bundle exec rspec
+        run: bundle exec rspec
