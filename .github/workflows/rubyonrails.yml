@@ -35,6 +35,8 @@ jobs:
           bundler-cache: true
       # Add or replace test runners here
       - name: creating database
-        run: rails db:migrate
+        run: bin/rails db:create
+      - name: migrating data
+        run: bin/rails db:migrate
       - name: Start App
         run: bin/rake
