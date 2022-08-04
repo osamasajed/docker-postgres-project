@@ -12,10 +12,10 @@ on:
     branches: [ "master" ]
 jobs:
   test:
-    runs-on: alpine
+    runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:latest-alpine
+        image: postgres:11-alpine
         ports:
           - "5432:5432"
         env:
