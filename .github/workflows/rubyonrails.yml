@@ -19,6 +19,8 @@ jobs:
         ports:
           - "5432:5432"
         env:
+          POSTGRES_DB: oms_api_test
+          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
     env:
       RAILS_ENV: test
@@ -33,6 +35,4 @@ jobs:
           bundler-cache: true
       # Add or replace test runners here
       - name: Testing App
-        run: |
-          bundle exec rails db:migrate
-          bundle exec rspec
+        run: bundle exec rspec
