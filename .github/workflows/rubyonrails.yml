@@ -36,5 +36,5 @@ jobs:
       # Add or replace test runners here
       - name: Testing App
         run: |
-        bundle exec rails db:migrate
-        bundle exec rspec
+          bundle exec rails db:migrate
+          bundle exec rspec
