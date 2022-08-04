@@ -24,7 +24,7 @@ jobs:
           POSTGRES_PASSWORD: password
     env:
       RAILS_ENV: test
-      DATABASE_URL: "postgres://postgres:postgres@localhost:5432/postgres"
+      DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -35,4 +35,6 @@ jobs:
           bundler-cache: true
       # Add or replace test runners here
       - name: Testing App
-        run: bundle exec rspec
+        run: |
+          bundle exec rails db:migrate
+          bundle exec rspec
