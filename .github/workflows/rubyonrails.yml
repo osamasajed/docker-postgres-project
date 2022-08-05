@@ -36,7 +36,9 @@ jobs:
           bundler-cache: true
       # Add or replace test runners here
       - name: Running Migrations
-        run: bundle exec rails db:migrate
+        run: |
+        bundle exec rails db:create
+        bundle exec rails db:migrate
       
       - name: Testing App
         run: bundle exec rspec
