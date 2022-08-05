@@ -19,10 +19,12 @@ jobs:
         ports:
           - "5432:5432"
         env:
+          POSTGRES_DB: oms_api_test
+          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
     env:
       RAILS_ENV: test
-      DATABASE_URL: "postgres://postgres:postgres@localhost:5432/oms_api_test"
+      DATABASE_URL: "postgres://$POSTGRES_USER:$POSTGRES_PASSWORD@localhost:5432/$POSTGRES_DB"
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -33,6 +35,9 @@ jobs:
           ruby-version: 2.7.1
           bundler-cache: true
       # Add or replace test runners here
+      - name: Install Dependencies
+        run: apt-get -y install libpq-dev nodejs
+      
       - name: Running Migrations
         run: bundle exec rails db:migrate
       
