@@ -19,8 +19,6 @@ jobs:
         ports:
           - "5432:5432"
         env:
-          POSTGRES_DB: oms_api_test
-          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
     env:
       RAILS_ENV: test
