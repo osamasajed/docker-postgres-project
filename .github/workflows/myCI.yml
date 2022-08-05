@@ -34,7 +34,7 @@ jobs:
           bundler-cache: true
       # Add or replace test runners here
       - name: Migrate Data
-        run: RAILS_ENV=test bundle exec rake db:drop
+        run: RAILS_ENV=test bundle exec rake db:migrate
         
       - name: Apply tests
         run: RAILS_ENV=test bundle exec rake
