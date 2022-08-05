@@ -35,6 +35,8 @@ jobs:
           ruby-version: 2.7.1
           bundler-cache: true
       # Add or replace test runners here
+      - name: Reset and Migrate
+        run: rake db:migrate:reset db:seed
       
       - name: Testing App
         run: bundle exec rspec
