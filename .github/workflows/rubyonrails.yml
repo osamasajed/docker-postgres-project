@@ -38,8 +38,7 @@ jobs:
       - name: Running Migrations
         run: |
           bundle exec rake db:reset
-        #  bundle exec rails db:create
-        #  bundle exec rails db:migrate
+          bundle exec rails db:migrate
       
       - name: Testing App
         run: bundle exec rspec
