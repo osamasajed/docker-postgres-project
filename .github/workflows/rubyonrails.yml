@@ -36,7 +36,7 @@ jobs:
           bundler-cache: true
       # Add or replace test runners here
       - name: Install Dependencies
-        run: apt-get -y install libpq-dev nodejs
+        run: sudo apt-get -y install libpq-dev nodejs
       
       - name: Running Migrations
         run: bundle exec rails db:migrate
