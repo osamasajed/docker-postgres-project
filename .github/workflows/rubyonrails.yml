@@ -36,4 +36,4 @@ jobs:
           bundler-cache: true
       # Add or replace test runners here
       - name: Reset and Migrate
-        run: RAILS_ENV=test bundle exec rake db:drop db:create db:migrate db:seed && RAILS_ENV=test bundle exec rspec
+        run: RAILS_ENV=test bundle exec rake db:drop db:create db:migrate db:seed && RAILS_ENV=test bundle exec rake
