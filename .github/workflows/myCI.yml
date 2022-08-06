@@ -33,10 +33,13 @@ jobs:
           ruby-version: 2.7.1
           bundler-cache: true
       # Add or replace test runners here
-      - name: Migrate Data
+      - name: Create DB
+        run: RAILS_ENV=test bundle exec rake db:create
+      
+      - name: Reset DB
         run: RAILS_ENV=test bundle exec rake db:reset
         
-      - name: Reset DB
+      - name: Migrate Data
         run: RAILS_ENV=test bundle exec rake db:migrate
         
       - name: Apply tests
