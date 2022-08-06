@@ -36,4 +36,4 @@ jobs:
       # Add or replace test runners her
         
       - name: Apply tests
-        run: RAILS_ENV=test bundle exec rspec test:prepare
+        run: RAILS_ENV=test bundle exec rspec db:test:prepare
