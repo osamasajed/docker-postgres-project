@@ -42,4 +42,4 @@ jobs:
         run: RAILS_ENV=test bundle exec rake db:migrate
 
       - name: Running Test
-        run: RAILS_ENV=test bundle exec rspec spec
+        run: RAILS_ENV=test bundle exec rspec spec test:prepare
