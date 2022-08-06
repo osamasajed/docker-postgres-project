@@ -39,7 +39,7 @@ jobs:
         run: RAILS_ENV=test bundle exec rake test:prepare
         
       - name: Migrate DB for tests
-        run: RAILS_ENV=test bundle exec rake test:load
+        run: RAILS_ENV=test bundle exec rake db:test:load
         
       - name: Run Test
         run: RAILS_ENV=test bundle exec rake
