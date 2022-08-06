@@ -35,7 +35,7 @@ jobs:
       
       # Add or replace test runners here
       - name: Migrate Data
-        run: RAILS_ENV=test bundle exec rake db:migrate
+        run: RAILS_ENV=test bundle exec rake db:drop db:create db:migrate db:seed
         
       - name: Apply tests
         run: RAILS_ENV=test bundle exec rake
