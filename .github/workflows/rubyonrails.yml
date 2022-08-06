@@ -36,13 +36,7 @@ jobs:
       # Add or replace test runners her
         
       - name: Prepare DB for tests
-        run: RAILS_ENV=test bundle exec rake test:prepare
+        run: RAILS_ENV=test bundle exec rake test:prepare && bundle exec rake db:migrate
         
-      - name: Migrate DB for tests
-        run: RAILS_ENV=test bundle exec rake db:migrate
-        
-      - name: Load DB for tests
-        run: RAILS_ENV=test bundle exec rake db:test:load
-        
-      - name: Run Test
-        run: RAILS_ENV=test bundle exec rake
+      - name: Apply for tests
+        run: RAILS_ENV=test bundle exec rake spec
