@@ -35,12 +35,12 @@ jobs:
       # Add or replace test runners here
       - name: Create DB
         run: RAILS_ENV=test bundle exec rake db:create
-      
-      - name: Reset DB
-        run: RAILS_ENV=test bundle exec rake db:reset
         
       - name: Migrate Data
         run: RAILS_ENV=test bundle exec rake db:migrate
+      
+      - name: Reset DB
+        run: RAILS_ENV=test bundle exec rake db:reset
         
       - name: Apply tests
         run: RAILS_ENV=test bundle exec rake
