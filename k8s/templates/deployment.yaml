@@ -1,0 +1,48 @@
+{{ range .Values.components }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .name -}}-deployment
+  labels:
+    app: {{ .name -}}-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .name -}}-app
+  template:
+    metadata:
+      labels:
+        app: {{ .name -}}-app
+    spec:
+      containers:
+      - name: {{ .name -}}-app
+        {{- if .image.uname }}
+        image: {{ .image.uname -}}/{{- .image.imageName -}}:{{- .image.tag }}
+        {{- else }}
+        image: {{ .image.imageName -}}:{{- .image.tag }}
+        {{- end }}
+        volumeMounts:
+        - mountPath: {{ .containerPath }}
+          name: {{ .name -}}-app-data
+        ports:
+        - containerPort: {{ .containerPort }}
+        {{- if .env }}
+        env:
+        - name: {{ .name | upper -}}_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ .name -}}-secret
+              key: {{ .name -}}-pass
+        - name: {{ .name | upper -}}_DB
+          valueFrom: 
+            secretKeyRef:
+              name: {{ .name -}}-secret
+              key: {{ .name -}}-db
+        {{- end }}
+      volumes:
+      - name: {{ .name -}}-app-data
+        hostPath:
+          path: {{ .dataPath }}
+{{- end }}
